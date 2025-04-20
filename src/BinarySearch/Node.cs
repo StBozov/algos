@@ -2,16 +2,16 @@ using System.Collections;
 
 namespace algos.BinarySearch;
 
-internal class BinarySearchTreeNode(int key) : IEnumerable<int>
+internal class Node(int key) : IEnumerable<int>
 {
     public int Key { get; } = key;
-    public BinarySearchTreeNode? Left { get; private set; }
-    public BinarySearchTreeNode? Right { get; private set; }
+    public Node? Left { get; private set; }
+    public Node? Right { get; private set; }
 
     public bool HasChildren => Left is not null && Right is not null;
     public bool HasChild => Left is not null || Right is not null;
-    public BinarySearchTreeNode Min => this.FindMin();
-    public BinarySearchTreeNode Max => this.FindMax();
+    public Node Min => this.FindMin();
+    public Node Max => this.FindMax();
 
     public int Count
     {
@@ -42,7 +42,7 @@ internal class BinarySearchTreeNode(int key) : IEnumerable<int>
                 return Left.Insert(key);
             }
 
-            Left = new BinarySearchTreeNode(key);
+            Left = new Node(key);
             return true;
         }
         else if (key > Key)
@@ -52,7 +52,7 @@ internal class BinarySearchTreeNode(int key) : IEnumerable<int>
                 return Right.Insert(key);
             }
 
-            Right = new BinarySearchTreeNode(key);
+            Right = new Node(key);
             return true;
         }
         else /* key == Key */
@@ -63,31 +63,31 @@ internal class BinarySearchTreeNode(int key) : IEnumerable<int>
 
     public bool Exist(int key)
     {
-        BinarySearchTreeNode? found = Find(key, out _);
+        Node? found = Find(key, out _);
         return found is not null;
     }
 
-    public BinarySearchTreeNode? Find(int key, out BinarySearchTreeNode? parentOfFound)
+    public Node? Find(int key, out Node? parentOfFound)
     {
         return this.Find(key, parentOfSubtree: null, out parentOfFound);
     }
 
-    public BinarySearchTreeNode? Delete(int key)
+    public Node? Delete(int key)
     {
-        BinarySearchTreeNode? candidate = Find(key, out BinarySearchTreeNode? parentOfCandidate);
+        Node? candidate = Find(key, out Node? parentOfCandidate);
         return parentOfCandidate is null ? null : Delete(candidate!, parentOfCandidate);
     }
 
-    private static BinarySearchTreeNode Delete(BinarySearchTreeNode node, BinarySearchTreeNode parentOfNode)
+    private static Node Delete(Node node, Node parentOfNode)
     {
         return parentOfNode.Left == node
             ? DeleteLeft(node, parentOfNode)
             : DeleteRight(node, parentOfNode);
     }
 
-    private static BinarySearchTreeNode DeleteLeft(BinarySearchTreeNode node, BinarySearchTreeNode parentOfNode)
+    private static Node DeleteLeft(Node node, Node parentOfNode)
     {
-        BinarySearchTreeNode deleted = new(node.Key);
+        Node deleted = new(node.Key);
 
         if (node.Left is null && node.Right is null)
         {
@@ -104,18 +104,18 @@ internal class BinarySearchTreeNode(int key) : IEnumerable<int>
         else if (node.Left is not null && node.Right is not null)
         {
             // find in order successor (the smallest value in the right subtree)
-            BinarySearchTreeNode rightSubtree = node.Right;
-            BinarySearchTreeNode parentOfRightSubtree = node;
-            BinarySearchTreeNode min = rightSubtree.FindMin(parentOfRightSubtree, out BinarySearchTreeNode? parentOfMin);
+            Node rightSubtree = node.Right;
+            Node parentOfRightSubtree = node;
+            Node min = rightSubtree.FindMin(parentOfRightSubtree, out Node? parentOfMin);
             // TODO: 
         }
 
         return deleted;
     }
 
-    private static BinarySearchTreeNode DeleteRight(BinarySearchTreeNode node, BinarySearchTreeNode parentOfNode)
+    private static Node DeleteRight(Node node, Node parentOfNode)
     {
-        BinarySearchTreeNode deleted = new(node.Key);
+        Node deleted = new(node.Key);
 
         if (node.Left is null && node.Right is null)
         {
@@ -132,9 +132,9 @@ internal class BinarySearchTreeNode(int key) : IEnumerable<int>
         else if (node.Left is not null && node.Right is not null)
         {
             // find in order successor (the smallest value in the right subtree)
-            BinarySearchTreeNode rightSubtree = node.Right;
-            BinarySearchTreeNode parentOfRightSubtree = node;
-            BinarySearchTreeNode min = rightSubtree.FindMin(parentOfRightSubtree, out BinarySearchTreeNode? parentOfMin);
+            Node rightSubtree = node.Right;
+            Node parentOfRightSubtree = node;
+            Node min = rightSubtree.FindMin(parentOfRightSubtree, out Node? parentOfMin);
             // TODO:
         }
 
@@ -143,10 +143,10 @@ internal class BinarySearchTreeNode(int key) : IEnumerable<int>
 
     public IEnumerator<int> GetEnumerator()
     {
-        List<BinarySearchTreeNode> nodes = [];
+        List<Node> nodes = [];
         this.TraverseForward(nodes);
 
-        foreach (BinarySearchTreeNode node in nodes)
+        foreach (Node node in nodes)
             yield return node.Key;
     }
 

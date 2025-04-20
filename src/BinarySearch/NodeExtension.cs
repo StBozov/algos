@@ -1,12 +1,12 @@
 namespace algos.BinarySearch;
 
-internal static class BinarySearchTreeNodeExtension
+internal static class NodeExtension
 {
-    public static BinarySearchTreeNode FindMin(this BinarySearchTreeNode subtree) => subtree.FindMin(null, out _);
-    public static BinarySearchTreeNode FindMin(this BinarySearchTreeNode subtree, BinarySearchTreeNode? parentOfSubtree, out BinarySearchTreeNode? parentOfMin)
+    public static Node FindMin(this Node subtree) => subtree.FindMin(null, out _);
+    public static Node FindMin(this Node subtree, Node? parentOfSubtree, out Node? parentOfMin)
     {
         parentOfMin = parentOfSubtree;
-        BinarySearchTreeNode left = subtree;
+        Node left = subtree;
 
         while (left.Left is not null)
         {
@@ -17,12 +17,12 @@ internal static class BinarySearchTreeNodeExtension
         return left;
     }
 
-    public static BinarySearchTreeNode FindMax(this BinarySearchTreeNode subtree) => subtree.FindMax(null, out _);
+    public static Node FindMax(this Node subtree) => subtree.FindMax(null, out _);
 
-    public static BinarySearchTreeNode FindMax(this BinarySearchTreeNode subtree, BinarySearchTreeNode? parentOfSubtree, out BinarySearchTreeNode? parentOfMax)
+    public static Node FindMax(this Node subtree, Node? parentOfSubtree, out Node? parentOfMax)
     {
         parentOfMax = parentOfSubtree;
-        BinarySearchTreeNode right = subtree;
+        Node right = subtree;
 
         while (right.Right is not null)
         {
@@ -33,21 +33,21 @@ internal static class BinarySearchTreeNodeExtension
         return right;
     }
 
-    public static void TraverseForward(this BinarySearchTreeNode subtree, List<BinarySearchTreeNode> nodes)
+    public static void TraverseForward(this Node subtree, List<Node> nodes)
     {
         subtree.Left?.TraverseForward(nodes);
         nodes.Add(subtree);
         subtree.Right?.TraverseForward(nodes);
     }
 
-    public static void TraverseBackward(this BinarySearchTreeNode subtree, List<BinarySearchTreeNode> nodes)
+    public static void TraverseBackward(this Node subtree, List<Node> nodes)
     {
         subtree.Right?.TraverseBackward(nodes);
         nodes.Add(subtree);
         subtree.Left?.TraverseBackward(nodes);
     }
 
-    public static BinarySearchTreeNode? Find(this BinarySearchTreeNode subtree, int key, BinarySearchTreeNode? parentOfSubtree, out BinarySearchTreeNode? parentOfFound)
+    public static Node? Find(this Node subtree, int key, Node? parentOfSubtree, out Node? parentOfFound)
     {
         if (subtree.Left is not null && (key < subtree.Key))
         {

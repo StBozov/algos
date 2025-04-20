@@ -4,7 +4,7 @@ namespace algos.BinarySearch;
 
 public class BinarySearchTree(int rootKey) : IEnumerable<int>
 {
-    private readonly BinarySearchTreeNode root = new(rootKey);
+    private readonly Node root = new(rootKey);
 
     public bool Insert(int key) => root.Insert(key);
 
