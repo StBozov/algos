@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "**bin*": true,
+        "**obj*": true,
+        "**.csproj": true,
+        "**.sln": true,
+        "**.gitignore": true,
+        "**README*": true,
+    }
+}
