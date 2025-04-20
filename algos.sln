@@ -2,7 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "algos", "algos.csproj", "{35E1431F-B60F-41A4-1963-522752B19217}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "algos", "src\algos.csproj", "{77267BCE-3DAC-DC55-01BB-D27A7B808BA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "algos.tests", "tests\algos.tests.csproj", "{DB9A229A-385B-7D6B-8D21-5CD9E82B30DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +12,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{35E1431F-B60F-41A4-1963-522752B19217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35E1431F-B60F-41A4-1963-522752B19217}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35E1431F-B60F-41A4-1963-522752B19217}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35E1431F-B60F-41A4-1963-522752B19217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77267BCE-3DAC-DC55-01BB-D27A7B808BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77267BCE-3DAC-DC55-01BB-D27A7B808BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77267BCE-3DAC-DC55-01BB-D27A7B808BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77267BCE-3DAC-DC55-01BB-D27A7B808BA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB9A229A-385B-7D6B-8D21-5CD9E82B30DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB9A229A-385B-7D6B-8D21-5CD9E82B30DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB9A229A-385B-7D6B-8D21-5CD9E82B30DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB9A229A-385B-7D6B-8D21-5CD9E82B30DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8B890BFF-4193-43A8-989F-C8ADE73D7ADC}
+		SolutionGuid = {E66C3742-D1DF-4D67-A94D-BB9B5FF1B442}
 	EndGlobalSection
 EndGlobal
