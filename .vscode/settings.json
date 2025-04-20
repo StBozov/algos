@@ -4,7 +4,7 @@
         "**/obj*": true,
         "**/algos.csproj": true,
         "**/algos.tests.csproj": true,
-        "**/*.sln": true,
+        "**/algos.*.sln": true,
         "**/.gitignore": true,
         "**README*": true,
     }
